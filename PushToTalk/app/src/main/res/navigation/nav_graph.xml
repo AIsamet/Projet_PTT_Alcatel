@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.cnam.pushtotalk.presentation.signin.LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_canalListFragment"
+            app:destination="@id/roomsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/talkFragment"
+        android:name="com.cnam.pushtotalk.presentation.talk.TalkFragment"
+        tools:layout="@layout/fragment_talk">
+        <argument
+            android:name="roomId"
+            app:argType="string" />
+        <argument
+            android:name="roomName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_talkFragment_to_roomsFragment"
+            app:destination="@id/roomsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/roomsFragment"
+        android:name="com.cnam.pushtotalk.presentation.rooms.RoomsFragment"
+        tools:layout="@layout/canal_list">
+        <action
+            android:id="@+id/action_roomsFragment_to_talkFragment"
+            app:destination="@id/talkFragment"/>
+    </fragment>
+</navigation>
